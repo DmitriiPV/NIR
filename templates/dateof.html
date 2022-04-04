@@ -8,18 +8,17 @@
         <div class="mb-3">
             <form method="post" action="" value="">
                 {% csrf_token %}
-
+                <label for="pacient">Пациент:</label>
+                <select class="form-control mb-3" id="" name="" style="width: 200px;margin: auto">
+                </select>
+                <label for="pacient">Врач:</label>
+                <select class="form-control mb-3" id="" name="" style="width: 200px;margin: auto">
+                </select>
+                <label for="pacient">Диагноз:</label>
+                <select class="form-control mb-3" id="" name="" style="width: 200px;margin: auto">
+                </select>
+                <label for="bday">Дата приёма:</label>
                 <div class="mb-3">
-                    <input type="text" name = "second_name" id="name" placeholder="Фамилия">
-                </div>
-                <div class="mb-3">
-                    <input type="text" name = "first_name" id="name" placeholder="Имя">
-                </div>
-                <div class="mb-3">
-                    <input type="text" name = "last_name" id="name" placeholder="Отчество">
-                </div>
-                <div class="mb-3">
-                    <label for="bday">Дата рождения:</label>
                     <input type="date" id="bday" name="bday">
                 </div>
                 <input type="`text`" name="id_post" id="id_post" value="" disable hidden>

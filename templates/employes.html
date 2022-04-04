@@ -3,7 +3,7 @@
 {% block content %}
     <div class="text-center">
         <div class="mb-3">
-            Введите данные для регистрации нового пациента
+            Введите данные для регистрации нового сотрудника
         </div>
         <div class="mb-3">
             <form method="post" action="" value="">
@@ -18,10 +18,12 @@
                 <div class="mb-3">
                     <input type="text" name = "last_name" id="name" placeholder="Отчество">
                 </div>
-                <label for="bday">Дата рождения:</label>
-                <div class="mb-3">
-                    <input type="date" id="bday" name="bday">
-                </div>
+                <label for="pacient">Специальность:</label>
+                <select class="form-control mb-3" id="" name="" style="width: 200px;margin: auto">
+                </select>
+                <label for="pacient">Квалификация:</label>
+                <select class="form-control mb-3" id="" name="" style="width: 200px;margin: auto">
+                </select>
                 <input type="`text`" name="id_post" id="id_post" value="" disable hidden>
                 <button type="submit" class="main_button" id="main_button">Добавить</button>
                 <input type="hidden" name="next" value="" />
