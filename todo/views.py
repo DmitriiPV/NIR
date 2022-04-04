@@ -15,14 +15,12 @@ def reg(request):
         'title': 'Регистрация',
         # 'create_user': user_form,
     })
+def index(request):
+    # отображение страницы регистрации
+    # user_form = UReg()
+    return render(request, 'index.html', {
+        'title': 'Главгая страница',
+        # 'create_user': user_form,
+    })
 
-
-def auth(request):
-    # отображение страницы авторизации
-    # if not request.user.is_authenticated:
-        return render(request, 'auth.html', {
-            'title': 'Авторизация',
-        })
-    # else:
-    #     return redirect(user_profile)
 
