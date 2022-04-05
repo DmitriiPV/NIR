@@ -6,7 +6,7 @@
             Введите данные для регистрации нового сотрудника
         </div>
         <div class="mb-3">
-            <form method="post" action="" value="">
+            <form method="post" action="{% url 'createEmp' %}" value="" enctype="multipart/form-data">
                 {% csrf_token %}
 
                 <div class="mb-3">
@@ -18,23 +18,60 @@
                 <div class="mb-3">
                     <input type="text" name = "last_name" id="name" placeholder="Отчество">
                 </div>
-                <label for="pacient">Специальность:</label>
-                <select class="form-control mb-3" id="" name="" style="width: 200px;margin: auto">
+                <label for="special">Специальность:</label>
+                <select class="form-control mb-3" id="" name="special" style="width: 200px;margin: auto">
+                     {% for tvad in special_all %}
+                        <option value="{{ tvad.id }}">{{ tvad.name }}</option>
+                    {% endfor %}
                 </select>
-                <label for="pacient">Квалификация:</label>
-                <select class="form-control mb-3" id="" name="" style="width: 200px;margin: auto">
+                <label for="skill">Квалификация:</label>
+                <select class="form-control mb-3" id="" name="skill" style="width: 200px;margin: auto">
+                    {% for tvad in skill_all %}
+                        <option value="{{ tvad.id }}">{{ tvad.name }}</option>
+                    {% endfor %}
                 </select>
                 <input type="`text`" name="id_post" id="id_post" value="" disable hidden>
                 <button type="submit" class="main_button" id="main_button">Добавить</button>
-                <input type="hidden" name="next" value="" />
+                <input type="hidden" name="next" value="{{ next }}" />
             </form>
         </div>
-        <div class="row" style="justify-content: center" id="error">
-{#            {% for massage in messages %}#}
-{#                <ul class="{{ massage.tags }}">#}
-{#                    {% if 'safe' in massage.tags %}{{ massage|safe }}{% else %}{{ massage }}{% endif %}#}
-{#                </ul>#}
-{#            {% endfor %}#}
+         <div class="row" style="justify-content: center;width: 300px; margin: auto" id="error">
+            {% for massage in messages %}
+                <ul class="{{ massage.tags }}">
+                    {% if 'safe' in massage.tags %}{{ massage|safe }}{% else %}{{ massage }}{% endif %}
+                </ul>
+            {% endfor %}
         </div>
+        </div>
+    <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Имя</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Отчество</th>
+                <th scope="col">Специальность</th>
+                <th scope="col">Квалификация</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            {% for emp in employes_all %}
+                <tbody>
+                    <tr>
+                        <td>{{ emp.name }}</td>
+                        <td>{{ emp.second_name }}</td>
+                        <td>{{ emp.last_name }}</td>
+                        <td>{{ emp.special.name }}</td>
+                        <td>{{ emp.skill.name }}</td>
+                        <td>
+                            <form action="{% url 'deleteEmp' %}" value="" enctype="multipart/form-data" method="post">
+                                {% csrf_token %}
+                                <input type="text" name="id_emp" value="{{ emp.id }}" disable hidden>
+                                <input class="inp" type="submit" name="delete" value="Удалить">
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table>
     </div>
 {% endblock %}

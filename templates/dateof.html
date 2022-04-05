@@ -10,16 +10,25 @@
                 {% csrf_token %}
                 <label for="pacient">Пациент:</label>
                 <select class="form-control mb-3" id="" name="" style="width: 200px;margin: auto">
+                    {% for tvad in pacient_all %}
+                        <option value="{{ tvad.id }}">{{ tvad.name }} {{ tvad.second_name }} {{ tvad.last_name }}</option>
+                    {% endfor %}
                 </select>
                 <label for="pacient">Врач:</label>
                 <select class="form-control mb-3" id="" name="" style="width: 200px;margin: auto">
+                    {% for tvad in emp_all %}
+                        <option value="{{ tvad.id }}">{{ tvad.name }} {{ tvad.second_name }} {{ tvad.last_name }}</option>
+                    {% endfor %}
                 </select>
                 <label for="pacient">Диагноз:</label>
                 <select class="form-control mb-3" id="" name="" style="width: 200px;margin: auto">
+                    {% for tvad in diag_all %}
+                        <option value="{{ tvad.id }}">{{ tvad.name }}</option>
+                    {% endfor %}
                 </select>
-                <label for="bday">Дата приёма:</label>
+                <label for="dday">Дата приёма:</label>
                 <div class="mb-3">
-                    <input type="date" id="bday" name="bday">
+                    <input type="date" id="dday" name="dday">
                 </div>
                 <input type="`text`" name="id_post" id="id_post" value="" disable hidden>
                 <button type="submit" class="main_button" id="main_button">Добавить</button>

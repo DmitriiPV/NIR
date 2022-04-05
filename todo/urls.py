@@ -14,6 +14,10 @@ urlpatterns = [
     path('', views.index, name='index'),
     # роут для отображения страницы - Дата обращения
     path('dateof', views.dateof, name='dateof'),
+    #
+    path('deleteEmp', views.deleteEmp, name='deleteEmp'),
+    #
+    path('createEmp', views.createEmp, name='createEmp'),
     # роут для отображения страницы - Сотрудники
     path('employes', views.employes, name='employes'),
 ]
