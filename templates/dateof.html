@@ -6,24 +6,26 @@
             Выберите пациента и дату обращения
         </div>
         <div class="mb-3">
-            <form method="post" action="" value="">
+            <form method="post" action="{% url 'doctorspecial' %}" value="" name="empf">
                 {% csrf_token %}
                 <label for="pacient">Пациент:</label>
-                <select class="form-control mb-3" id="" name="" style="width: 200px;margin: auto">
+                <select class="form-control mb-3" id="" name="pac" style="width: 200px;margin: auto">
                     {% for tvad in pacient_all %}
                         <option value="{{ tvad.id }}">{{ tvad.name }} {{ tvad.second_name }} {{ tvad.last_name }}</option>
                     {% endfor %}
                 </select>
-                <label for="pacient">Врач:</label>
-                <select class="form-control mb-3" id="" name="" style="width: 200px;margin: auto">
+                <label for="doctor">Врач:</label>
+                <select class="form-control mb-3" id="" name="vrac" style="width: 200px;margin: auto">
                     {% for tvad in emp_all %}
-                        <option value="{{ tvad.id }}">{{ tvad.name }} {{ tvad.second_name }} {{ tvad.last_name }}</option>
+                        <option value="{{ tvad.id }}">{{ tvad.name }} {{ tvad.second_name }} {{ tvad.last_name }} {{ tvad.special.name }}</option>
                     {% endfor %}
+{#                    <input type="submit" />#}
                 </select>
+
                 <label for="pacient">Диагноз:</label>
-                <select class="form-control mb-3" id="" name="" style="width: 200px;margin: auto">
+                <select class="form-control mb-3" id="" name="diagn" style="width: 200px;margin: auto">
                     {% for tvad in diag_all %}
-                        <option value="{{ tvad.id }}">{{ tvad.name }}</option>
+                        <option value="{{ tvad.id }}">{{ tvad.name }} </option>
                     {% endfor %}
                 </select>
                 <label for="dday">Дата приёма:</label>
@@ -43,4 +45,34 @@
 {#            {% endfor %}#}
         </div>
     </div>
+     <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Пациент</th>
+                <th scope="col">Врач</th>
+                <th scope="col">Диагноз</th>
+                <th scope="col">Время посещения</th>
+                <th scope="col">Стоимость лечения</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            {% for dto in dateof_all %}
+                <tbody>
+                    <tr>
+                        <td>{{ dto.pacient.name }} {{ dto.pacient.second_name }} {{ dto.pacient.last_name }}  </td>
+                        <td>{{ dto.emp.name }} {{ dto.emp.second_name }} {{ dto.emp.last_name }}</td>
+                        <td>{{ dto.diag.name }}</td>
+                        <td>{{ dto.dateoft }}</td>
+                        <td>{{ dto.costh }}</td>
+                        <td>
+                            <form action="{% url 'deletedate' %}" value="" enctype="multipart/form-data" method="post">
+                                {% csrf_token %}
+                                <input type="text" name="id_dto" value="{{ dto.id }}" disable hidden>
+                                <input class="inp" type="submit" name="delete" value="Удалить">
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table>
 {% endblock %}

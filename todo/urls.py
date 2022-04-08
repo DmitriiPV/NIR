@@ -12,6 +12,10 @@ urlpatterns = [
     path('reg', views.reg, name='reg'),
     # роут Домашней страницы
     path('', views.index, name='index'),
+    #
+    path('doctorspecial', views.doctorspecial, name='doctorspecial'),
+    #
+    path('deletedate', views.deletedate, name='deletedate'),
     # роут для отображения страницы - Дата обращения
     path('dateof', views.dateof, name='dateof'),
     #

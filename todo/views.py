@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from .models import Pacient, Special, Skill, Employes, Diagnosis
+from .models import Pacient, Special, Skill, Employes, Diagnosis, DateOf
 from django.contrib import messages
 
 
@@ -49,18 +49,68 @@ def reg(request):
     })
 
 
+def doctorspecial(request):
+    if request.method =='POST':
+        pac = request.POST['pac']
+        vrac = request.POST['vrac']
+        diagn = request.POST['diagn']
+        dday = request.POST['dday']
+        pac_id = Pacient.objects.get(id=pac)
+        vrac_id = Employes.objects.get(id=vrac)
+        diagn_id = Diagnosis.objects.get(id=diagn)
+        skill_id = Employes.objects.get(id=vrac).skill.id
+        koef = Skill.objects.get(id=skill_id).koef
+        cost= Diagnosis.objects.get(id=diagn).cost
+        print(skill_id)
+        print(koef)
+        print(cost)
+        if (pac != '') & (vrac != '') & (diagn != '') & (dday != ''):
+            DateOf.objects.create(
+                pacient=pac_id,
+                emp=vrac_id,
+                diag=diagn_id,
+                dateoft=dday,
+                costh=float(koef)*int(cost)
+            )
+            return redirect('dateof')
+        else :
+            return redirect('dateof')
+    return redirect('dateof')
+
+
+def deletedate(request):
+    if request.method == 'POST':
+        id_dto = request.POST['id_dto']
+        DateOf.objects.filter(id=id_dto).delete()
+        return redirect('dateof')
+    return redirect('dateof')
+
 def dateof(request):
     # отображение страницы регистрации
     pacient_all = Pacient.objects.all()
     emp_all = Employes.objects.all()
     diag_all = Diagnosis.objects.all()
+    dateof_all = DateOf.objects.all()
+    # id = request.session.get('id')
+    # if (id != '') :
+    #     per = Employes.objects.get(id=id).special.id
+    #     dia = Diagnosis.objects.filter(special=per).all()
+    #     print(per)
+    #     return render(request, 'dateof.html', {
+    #         'title': 'Дата обращения',
+    #         'pacient_all': pacient_all,
+    #         'emp_all': emp_all,
+    #         'diag_all': diag_all,
+    #         'dia': dia,
+    #     })
+    # else :
     return render(request, 'dateof.html', {
-        'title': 'Дата обращения',
-        'pacient_all': pacient_all,
-        'emp_all': emp_all,
-        'diag_all': diag_all,
-    })
-
+            'title': 'Дата обращения',
+            'pacient_all': pacient_all,
+            'emp_all': emp_all,
+            'diag_all': diag_all,
+            'dateof_all' : dateof_all,
+        })
 
 def deleteEmp(request):
     if request.method == 'POST':

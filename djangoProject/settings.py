@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'todo',
+    'smart_selects',
 ]
 
 MIDDLEWARE = [
@@ -113,6 +114,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+JQUERY_URL = True
+
+USE_DJANGO_JQUERY = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
