@@ -40,7 +40,6 @@ class Diagnosis(models.Model):
 
     name = models.CharField(max_length=150, verbose_name='Название')
     cost = models.IntegerField(verbose_name='Стоимость лечения')
-    special = models.ForeignKey(Special, on_delete=models.DO_NOTHING, verbose_name='Категория')
 
 class DateOf(models.Model):
 

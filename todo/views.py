@@ -85,6 +85,7 @@ def deletedate(request):
         return redirect('dateof')
     return redirect('dateof')
 
+
 def dateof(request):
     # отображение страницы регистрации
     pacient_all = Pacient.objects.all()
@@ -112,10 +113,11 @@ def dateof(request):
             'dateof_all' : dateof_all,
         })
 
+
 def deleteEmp(request):
     if request.method == 'POST':
         id_emp = request.POST['id_emp']
-        Employes.objects.filter(id=id_emp).delete()
+        Employes.objects.get(id=id_emp).delete()
         return redirect('employes')
     return redirect('employes')
 
