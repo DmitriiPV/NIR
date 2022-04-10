@@ -10,13 +10,13 @@
                 {% csrf_token %}
 
                 <div class="mb-3">
-                    <input type="text" name = "second_name" id="name" placeholder="Фамилия">
+                    <input type="text" name = "second_name" id="name" placeholder="Фамилия" title="Разрешено использовать только пробелы и русские буквы" pattern="^[А-Яа-яЁё\s\-]+$" >
                 </div>
                 <div class="mb-3">
-                    <input type="text" name = "first_name" id="name" placeholder="Имя">
+                    <input type="text" name = "first_name" id="name" placeholder="Имя" title="Разрешено использовать только пробелы и русские буквы" pattern="^[А-Яа-яЁё\s\-]+$" >
                 </div>
                 <div class="mb-3">
-                    <input type="text" name = "last_name" id="name" placeholder="Отчество">
+                    <input type="text" name = "last_name" id="name" placeholder="Отчество" title="Разрешено использовать только пробелы и русские буквы" pattern="^[А-Яа-яЁё\s\-]+$" >
                 </div>
                 <label for="special">Специальность:</label>
                 <select class="form-control mb-3" id="" name="special" style="width: 200px;margin: auto">
@@ -46,8 +46,8 @@
     <table class="table">
             <thead>
             <tr>
-                <th scope="col">Имя</th>
                 <th scope="col">Фамилия</th>
+                <th scope="col">Имя</th>
                 <th scope="col">Отчество</th>
                 <th scope="col">Специальность</th>
                 <th scope="col">Квалификация</th>
@@ -57,8 +57,8 @@
             {% for emp in employes_all %}
                 <tbody>
                     <tr>
-                        <td>{{ emp.name }}</td>
                         <td>{{ emp.second_name }}</td>
+                        <td>{{ emp.name }} </td>
                         <td>{{ emp.last_name }}</td>
                         <td>{{ emp.special.name }}</td>
                         <td>{{ emp.skill.name }}</td>

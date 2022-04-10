@@ -10,13 +10,13 @@
                 {% csrf_token %}
 
                 <div class="mb-3">
-                    <input type="text" name = "second_name" id="name" placeholder="Фамилия">
+                    <input type="text" name = "second_name" id="name" placeholder="Фамилия" title="Разрешено использовать только пробелы и русские буквы" pattern="^[А-Яа-яЁё\s\-]+$" >
                 </div>
                 <div class="mb-3">
-                    <input type="text" name = "first_name" id="name" placeholder="Имя">
+                    <input type="text" name = "first_name" id="name" placeholder="Имя" title="Разрешено использовать только пробелы и русские буквы" pattern="^[А-Яа-яЁё\s\-]+$" >
                 </div>
                 <div class="mb-3">
-                    <input type="text" name = "last_name" id="name" placeholder="Отчество">
+                    <input type="text" name = "last_name" id="name" placeholder="Отчество" title="Разрешено использовать только пробелы и русские буквы" pattern="^[А-Яа-яЁё\s\-]+$" >
                 </div>
                 <label for="bday">Дата рождения:</label>
                 <div class="mb-3">

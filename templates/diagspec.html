@@ -1,0 +1,107 @@
+{% extends 'template.html' %}
+
+{% block content %}
+    <div class="con">
+        <div class="dleft">
+    <div class="text-center">
+        <div class="mb-3">
+            Введите данные для добавления нового диагноза
+        </div>
+        <div class="mb-3">
+            <form method="post" action="{% url 'creatediag' %}" value="" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <input type="text" name = "dname" id="name" placeholder="Название">
+                </div>
+                <div class="mb-3">
+                    <input type="text" name = "dcost" id="name" placeholder="Стоимость лечения">
+                </div>
+                <input type="`text`" name="id_post" id="id_post" value="" disable hidden>
+                <button type="submit" class="main_button" id="main_button">Добавить</button>
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+        </div>
+{#        <div class="row" style="justify-content: center;width: 300px; margin: auto" id="error">#}
+{#            {% for massage in messages %}#}
+{#                <ul class="{{ massage.tags }}">#}
+{#                    {% if 'safe' in massage.tags %}{{ massage|safe }}{% else %}{{ massage }}{% endif %}#}
+{#                </ul>#}
+{#            {% endfor %}#}
+{#        </div>#}
+    </div>
+    <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col">Стоимость лечения</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            {% for ddd in diagall %}
+                <tbody>
+                    <tr>
+                        <td>{{ ddd.name }}</td>
+                        <td>{{ ddd.cost }}</td>
+                        <td>
+                            <form action="{% url 'deleteddd' %}" value="" enctype="multipart/form-data" method="post">
+                                {% csrf_token %}
+                                <input type="text" name="id_ddd" value="{{ ddd.id }}" disable hidden>
+                                <input class="inp" type="submit" name="delete" value="Удалить">
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table>
+    </div>
+        <div class="sright">
+    <div class="text-center">
+        <div class="mb-3">
+            Введите данные для добавления новой специальности
+        </div>
+        <div class="mb-3">
+            <form method="post" action="{% url 'createspec' %}" value="" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <input type="text" name = "spname" id="name" placeholder="Название специальности">
+                </div>
+                <input type="`text`" name="id_post" id="id_post" value="" disable hidden>
+                <button type="submit" class="main_button" id="main_button">Добавить</button>
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+        </div>
+{#        <div class="row" style="justify-content: center;width: 300px; margin: auto" id="error">#}
+{#            {% for massage in messages %}#}
+{#                <ul class="{{ massage.tags }}">#}
+{#                    {% if 'safe' in massage.tags %}{{ massage|safe }}{% else %}{{ massage }}{% endif %}#}
+{#                </ul>#}
+{#            {% endfor %}#}
+{#        </div>#}
+    </div>
+    <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            {% for sss in specialall %}
+                <tbody>
+                    <tr>
+                        <td>{{ sss.name }}</td>
+                        <td>
+                            <form action="{% url 'deletesss' %}" value="" enctype="multipart/form-data" method="post">
+                                {% csrf_token %}
+                                <input type="text" name="id_sss" value="{{ sss.id }}" disable hidden>
+                                <input class="inp" type="submit" name="delete" value="Удалить">
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+.con{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.dleft{
+    width: 400px;
+}
+.sright{
+    width: 400px;
+}

@@ -24,4 +24,14 @@ urlpatterns = [
     path('createEmp', views.createEmp, name='createEmp'),
     # роут для отображения страницы - Сотрудники
     path('employes', views.employes, name='employes'),
+    #
+    path('creatediag', views.creatediag, name='creatediag'),
+    #
+    path('createspec', views.createspec, name='createspec'),
+    #
+    path('deleteddd', views.deleteddd, name='deleteddd'),
+    #
+    path('deletesss', views.deletesss, name='deletesss'),
+    #
+    path('diagspec', views.diagspec, name='diagspec')
 ]
