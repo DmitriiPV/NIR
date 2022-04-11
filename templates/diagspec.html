@@ -15,6 +15,7 @@
                             Данная страница содержить информацию о устанавливаемых диагнозах и врачебных специальностях.
                         </p>
                     <div class="con">
+                        <a href="https://disk.yandex.ru/i/6wnpS-jpRW0PsQ">Руководство пользователя</a>
                         <div class="linfo">
                         <p align="left">
                             В левой форме сначало необходимо ввести название диагноза,
@@ -106,11 +107,11 @@
                         <td>{{ ddd.name }}</td>
                         <td>{{ ddd.cost }}</td>
                         <td>
-                            <form action="{% url 'deleteddd' %}" value="" enctype="multipart/form-data" method="post">
-                                {% csrf_token %}
-                                <input type="text" name="id_ddd" value="{{ ddd.id }}" disable hidden>
-                                <input class="inp" type="submit" name="delete" value="Удалить">
-                            </form>
+{#                            <form action="{% url 'deleteddd' %}" value="" enctype="multipart/form-data" method="post">#}
+{#                                {% csrf_token %}#}
+{#                                <input type="text" name="id_ddd" value="{{ ddd.id }}" disable hidden>#}
+{#                                <input class="inp" type="submit" name="delete" value="Удалить">#}
+{#                            </form>#}
                         </td>
                     </tr>
                 </tbody>
@@ -157,11 +158,11 @@
                     <tr>
                         <td>{{ sss.name }}</td>
                         <td>
-                            <form action="{% url 'deletesss' %}" value="" enctype="multipart/form-data" method="post">
-                                {% csrf_token %}
-                                <input type="text" name="id_sss" value="{{ sss.id }}" disable hidden>
-                                <input class="inp" type="submit" name="delete" value="Удалить">
-                            </form>
+{#                            <form action="{% url 'deletesss' %}" value="" enctype="multipart/form-data" method="post">#}
+{#                                {% csrf_token %}#}
+{#                                <input type="text" name="id_sss" value="{{ sss.id }}" disable hidden>#}
+{#                                <input class="inp" type="submit" name="delete" value="Удалить">#}
+{#                            </form>#}
                         </td>
                     </tr>
                 </tbody>
