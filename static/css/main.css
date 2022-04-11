@@ -1,11 +1,21 @@
 .con{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .dleft{
-    width: 400px;
+    min-width: 400px;
+    max-width: 900px;
 }
 .sright{
-    width: 400px;
+    min-width: 400px;
+    max-width: 900px;
+}
+.raz{
+    max-height: 900px;
+    min-height: 700px;
+}
+.lraz{
+    margin-right: 20px;
+
 }

@@ -2,6 +2,37 @@
 
 {% block content %}
     <div class="text-center">
+        <button type="button" class="btn btn-primary" id="btn" style="margin-top: 20px; margin-bottom: 10px;">Просмотр информации о странице</button>
+        <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Информация</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="dateofinfo" align="left">
+                        Данная страница содержить информацию о сотрудниках в поликлинике.
+                        Сналача необходимо ввести ФИО сотрудника, а затем указать его должность и квалификацию.
+                    </p>
+                    <p align="left">
+                        В форме добавления нового сотрудника есть ограничения на:
+                    </p>
+                    <ul class="ulinfo">
+                        <li>
+                            <p align="left" class="mb-1">Отправку пустой формы</p>
+                        </li>
+                        <li>
+                            <p align="left" class="mb-1">Ввод числовых значений в поля: Фамилия, Имя, Отчество</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+              </div>
+            </div>
+        </div>
         <div class="mb-3">
             Введите данные для регистрации нового сотрудника
         </div>
