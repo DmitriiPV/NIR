@@ -121,6 +121,7 @@ def doctorspecial(request):
         print(skill_id)
         print(koef)
         print(cost)
+        fcost = float(koef) * int(cost)
         if (pac != '') & (vrac != '') & (diagn != '') & (dday != ''):
             DateOf.objects.create(
                 pacient=pac_id,
@@ -135,7 +136,7 @@ def doctorspecial(request):
                 'Пациент: ' + pac_sname + ' ' + pac_name + ' ' + pac_lname + ' ' + str(pac_bday) + '\n' + '\n' +
                 'Лечящий врач: ' + vrac_sname + ' ' + vrac_name + ' ' + vrac_lname + '\n' + '\n' +
                 'Установленный диагноз: ' + diagn_name + '\n' + '\n' +
-                'Стоимость оплаты: ' + str(cost) + ' ' + 'Рублей' + '\n' + '\n' +
+                'Стоимость оплаты: ' + str(fcost) + ' ' + 'Рублей' + '\n' + '\n' +
                 'Дата посещения: ' + str(dday)
             )
             f.close()
