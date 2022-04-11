@@ -134,7 +134,7 @@ def doctorspecial(request):
             f.write(
                 'Расчетная Счёт-квитанция на оплату услуг поликлиники' + '\n' + '\n' +
                 'Пациент: ' + pac_sname + ' ' + pac_name + ' ' + pac_lname + ' ' + str(pac_bday) + '\n' + '\n' +
-                'Лечящий врач: ' + vrac_sname + ' ' + vrac_name + ' ' + vrac_lname + '\n' + '\n' +
+                'Лечащий врач: ' + vrac_sname + ' ' + vrac_name + ' ' + vrac_lname + '\n' + '\n' +
                 'Установленный диагноз: ' + diagn_name + '\n' + '\n' +
                 'Стоимость оплаты: ' + str(fcost) + ' ' + 'Рублей' + '\n' + '\n' +
                 'Дата посещения: ' + str(dday)
@@ -160,25 +160,12 @@ def dateof(request):
     emp_all = Employes.objects.all()
     diag_all = Diagnosis.objects.all()
     dateof_all = DateOf.objects.all()
-    # id = request.session.get('id')
-    # if (id != '') :
-    #     per = Employes.objects.get(id=id).special.id
-    #     dia = Diagnosis.objects.filter(special=per).all()
-    #     print(per)
-    #     return render(request, 'dateof.html', {
-    #         'title': 'Дата обращения',
-    #         'pacient_all': pacient_all,
-    #         'emp_all': emp_all,
-    #         'diag_all': diag_all,
-    #         'dia': dia,
-    #     })
-    # else :
     return render(request, 'dateof.html', {
             'title': 'Дата обращения',
             'pacient_all': pacient_all,
             'emp_all': emp_all,
             'diag_all': diag_all,
-            'dateof_all' : dateof_all,
+            'dateof_all': dateof_all,
         })
 
 
